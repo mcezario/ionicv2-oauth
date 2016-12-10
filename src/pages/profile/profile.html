@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Profile</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-list *ngIf="isUserAuth">
+    <p>{{user.id}}</p>
+    <p>{{user.name}}</p>
+    <p>{{user.email}}</p>
+    <p><img src="{{user.picture}}" /></p>
+    <button ion-button (click)="logout()">Sair</button>
+  </ion-list>
+
+  <button  *ngIf="!isUserAuth" ion-button full icon-left (click)="loginFacebook()"><ion-icon name="logo-facebook" item-left></ion-icon>  Entrar com o Facebook</button>
+  <button  *ngIf="!isUserAuth" ion-button full icon-left color="danger"  (click)="loginGoogle()"><ion-icon name="logo-google"></ion-icon> Entrar com o Google</button>
+</ion-content>

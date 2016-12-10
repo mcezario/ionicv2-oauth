@@ -1,0 +1,33 @@
+<ion-menu [content]="content">
+
+  <ion-header>
+    <ion-navbar>
+      <ion-title>Menu</ion-title>
+    </ion-navbar>
+    <ion-toolbar no-border no-padding *ngIf="isUserAuth">
+        <div class="menu-profile">
+            <div class="menu-profile-content" padding>
+                <ion-row no-padding>
+                    <ion-col width-33>
+                        <div class="menu-profile-image"><img src="{{loggedUser.picture}}" alt="Profile Picture"></div>
+                    </ion-col>
+                    <ion-col width-66>
+                        <div class="menu-profile-username">{{loggedUser.name}}</div>
+                    </ion-col>
+                </ion-row>
+            </div>
+        </div>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list>
+      <button ion-item *ngFor="let p of pages" (click)="openPage(p)">
+        {{p.title}}
+      </button>
+    </ion-list>
+  </ion-content>
+
+</ion-menu>
+
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
