@@ -24,7 +24,7 @@ export class UsersService {
                 var urlPicture = this.appConstants.getFacebookProfileData() + "/" + profileData.id + "/picture?type=large";
                 this.http.get(urlPicture, {headers: this.getHeaders()}).subscribe(
                     pictureData => {
-                        profileData.avatar = pictureData.url;
+                        profileData.picture = pictureData.url;
                         this.setUser(profileData); callback(source, profileData);
                     }
                 );
